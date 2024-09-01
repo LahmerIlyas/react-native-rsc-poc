@@ -1,0 +1,33 @@
+{
+  "name": "@rsc/api-client-omdb",
+  "version": "1.0.0",
+  "packageManager": "yarn@3.6.4",
+  "exports": {
+    ".": "./dist/index.js",
+    "./server": "./dist/index.server.js",
+    "./client": "./dist/index.client.js"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.53.1",
+    "@types/axios": "^0.14.0",
+    "axios": "^1.7.6",
+    "orval": "^7.0.1"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "codegen": "orval --config ./config/orval.config.js",
+    "postinstall": "yarn build",
+    "watch": "tsc --watch",
+    "build": "rimraf dist && tsc"
+  }
+}

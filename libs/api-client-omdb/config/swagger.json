@@ -1,0 +1,266 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This API requires authorization, you can get a free key here: [http://omdbapi.com/apikey.aspx](http://omdbapi.com/apikey.aspx)",
+    "version": "1.0",
+    "title": "OMDb API",
+    "termsOfService": "http://omdbapi.com/legal.htm",
+    "contact": {
+      "email": "bfritz@fadingsignal.com"
+    },
+    "license": {
+      "name": "CC BY-NC 4.0",
+      "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+    }
+  },
+  "host": "omdbapi.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Title Parameter",
+      "description": "e.g. ?t=title"
+    },
+    {
+      "name": "ID Parameter",
+      "description": "e.g. ?i=tt0000001"
+    },
+    {
+      "name": "Search Parameter",
+      "description": "e.g. ?s=title"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "security": [
+    {
+      "APIKeyQueryParam": []
+    }
+  ],
+  "paths": {
+    "/?t": {
+      "get": {
+        "tags": [
+          "Title Parameter"
+        ],
+        "summary": "Returns the most popular match for a given title",
+        "operationId": "getTitle",
+        "parameters": [
+          {
+            "name": "t",
+            "in": "query",
+            "description": "Title of movie or series",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "y",
+            "in": "query",
+            "description": "Year of release",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Return movie or series",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "movie",
+              "series"
+            ]
+          },
+          {
+            "name": "plot",
+            "in": "query",
+            "description": "Return short or full plot",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "short",
+              "full"
+            ]
+          },
+          {
+            "name": "r",
+            "in": "query",
+            "description": "The response type to return",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "json",
+              "xml"
+            ]
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Not authenticated"
+          }
+        },
+        "security": [
+          {
+            "APIKeyQueryParam": []
+          }
+        ]
+      }
+    },
+    "/?i": {
+      "get": {
+        "tags": [
+          "ID Parameter"
+        ],
+        "summary": "Returns a single result based on the ID provided",
+        "operationId": "getId",
+        "parameters": [
+          {
+            "name": "i",
+            "in": "query",
+            "description": "A valid IMDb ID (e.g. tt0000001)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "plot",
+            "in": "query",
+            "description": "Return short or full plot",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "short",
+              "full"
+            ]
+          },
+          {
+            "name": "r",
+            "in": "query",
+            "description": "The response type to return",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "json",
+              "xml"
+            ]
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Not authenticated"
+          }
+        },
+        "security": [
+          {
+            "APIKeyQueryParam": []
+          }
+        ]
+      }
+    },
+    "/?s": {
+      "get": {
+        "tags": [
+          "Search Parameter"
+        ],
+        "summary": "Returns an array of results for a given title",
+        "operationId": "titleSearch",
+        "parameters": [
+          {
+            "name": "s",
+            "in": "query",
+            "description": "Title of movie or series",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "y",
+            "in": "query",
+            "description": "Year of release",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Return movie or series",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "movie",
+              "series"
+            ]
+          },
+          {
+            "name": "r",
+            "in": "query",
+            "description": "The response type to return",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "json",
+              "xml"
+            ]
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number to return",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Not authenticated"
+          }
+        },
+        "security": [
+          {
+            "APIKeyQueryParam": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "APIKeyQueryParam": {
+      "type": "apiKey",
+      "name": "apikey",
+      "in": "query"
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
