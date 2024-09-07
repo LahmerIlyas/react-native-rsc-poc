@@ -1,4 +1,6 @@
 # React Native with Server Components - Proof of Concept
+## Disclaimer
+Lot of the ideas that I applied here are inspired by the work that the Expo team is doing. In few instanaces, I shamelessy copy/pasted the code from their repo.
 
 ## Context
 

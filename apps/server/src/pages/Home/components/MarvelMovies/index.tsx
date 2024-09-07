@@ -16,7 +16,7 @@ export const MarvelMovies = async () => {
 
   return (
     <SimpleHorizontalCardsList
-      title="Marvel Movies"
+      title="Test Marvel Movies"
       component={MovieCard}
       data={movies}
       style={{ marginTop: 24 }}
